@@ -1,16 +1,21 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from classifiers import *
+import pandas as pd
+from data import *
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    # Load data
+    df = pd.read_csv('magic04.data', header=None)
+
+    # Balance data
+    df = balanceData(df)
+
+    # Split data into training and test sets
+    train_data, test_data, train_labels, test_labels = splitData(df)
+
+    # Training and testing classifiers
+    decisionTree(train_data, train_labels, test_data, test_labels)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
