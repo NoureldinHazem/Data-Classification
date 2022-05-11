@@ -12,5 +12,5 @@ def balanceData(dataframe):
 
 def splitData(dataframe):
     data, labels = dataframe.iloc[:, :-1], dataframe.iloc[:, -1]
-    X_train, X_test, y_train, y_test = train_test_split(data, labels, test_size=0.3)
+    X_train, X_test, y_train, y_test = train_test_split(data, labels, test_size=0.3, stratify=labels)
     return X_train, X_test, y_train, y_test
