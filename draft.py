@@ -27,3 +27,29 @@ with open('magic04.data') as file:
 #             maxAcc = acc
 #             best_k = k
 #     return best_k
+
+
+# Tuning KNN
+parameters = {'n_neighbors': range(1, 200, 10)}
+knn = KNeighborsClassifier()
+best_k_range = tuning(train_data, train_labels, parameters, knn, 'n_neighbors')
+start = best_k_range - 10 if best_k_range - 10 > 0 else 1
+parameters = {'n_neighbors': range(start, best_k_range + 10)}
+best_k = tuning(train_data, train_labels, parameters, knn, 'n_neighbors')
+
+# Tuning Random Forest
+parameters = {'n_estimators': range(1, 400, 50)}
+rf = RandomForestClassifier()
+best_n_range = tuning(train_data, train_labels, parameters, rf, 'n_estimators')
+start = best_n_range - 10 if best_n_range - 10 > 0 else 1
+parameters = {'n_estimators': range(start, best_n_range + 10)}
+best_n = tuning(train_data, train_labels, parameters, rf, 'n_estimators')
+
+# Tuning adaboost
+parameters = {'n_estimators': range(1, 400, 50)}
+ab = AdaBoostClassifier()
+best_n_range = tuning(train_data, train_labels, parameters, ab, 'n_estimators')
+print('Best R1 = ', best_n_range)
+start = best_n_range - 10 if best_n_range - 10 > 0 else 1
+parameters = {'n_estimators': range(start, best_n_range + 10)}
+best_r = tuning(train_data, train_labels, parameters, ab, 'n_estimators')
