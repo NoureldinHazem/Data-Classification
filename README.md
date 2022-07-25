@@ -19,7 +19,7 @@ Apply the classifiers from the following models on your dataset, tune parameter(
 5) Naive Bayes [Parameters to be tuned: None]
 
 </br>
-Bonus:</b>
+Bonus:</br>
 Use Pytorch to build a neural network with dense layers and apply the model on your
 dataset. Use 2 layers and tune the number of hidden units in every layer.</br></br>
 This project was required in AI course</br></br>
